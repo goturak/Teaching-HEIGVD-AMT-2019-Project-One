@@ -14,6 +14,10 @@ import java.util.ArrayList;
  * @author goturak
  */
 public class MatchesManager {
+    
+    
+    
+    
     PlayerManager pm= new PlayerManager();
     public Match getRandomMatch(){
         ArrayList<Player> ps=new ArrayList(pm.getAllPLayers());
