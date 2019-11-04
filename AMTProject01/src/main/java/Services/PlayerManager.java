@@ -15,9 +15,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
 import javax.annotation.Resource;
-import javax.ejb.Stateless;
 import javax.sql.DataSource;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -25,29 +27,14 @@ import javax.sql.DataSource;
  */
 public class PlayerManager {
     
-    @Resource(lookup = "java:/jdbc/TeamEsport")
-  private DataSource dataSource;
-
+    @Resource(lookup= "jdbc/TeamEsport")
+    private DataSource datasource;
     
     Map<String,Player> players = new HashMap<String,Player>();
 
     public PlayerManager() {
-        
-         try {
-      try (Connection connection = dataSource.getConnection(); PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM Player");) {
-        //PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM actor");
-        ResultSet rs = pstmt.executeQuery();
-        while (rs.next()) {
-          String pseudo = rs.getString("pseudo");
-          String name = rs.getString("name");
-   
-          players.put(pseudo,new Player(pseudo,name,new Team("Solary")));
-        }
-        pstmt.close();
-      }
-    } catch (SQLException ex) {
-     // Logger.getLogger(ActorsManager.class.getName()).log(Level.SEVERE, null, ex);
-    }
+                
+    
         
         
         
@@ -72,6 +59,27 @@ public class PlayerManager {
     }
 
     public List<Player> getAllPLayers(){
+        
+        try {
+             
+      try (Connection connection = datasource.getConnection(); 
+              PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM Player");
+              ) {
+        //PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM actor");
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+          String pseudo = rs.getString("pseudo");
+          String name = rs.getString("name");
+   
+          players.put(pseudo,new Player(pseudo,name,new Team("Solary")));
+        }
+        pstmt.close();
+      }
+    } catch (SQLException ex) {
+      Logger.getLogger(PlayerManager.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+        
         return new ArrayList<Player>(players.values());
     }
 
