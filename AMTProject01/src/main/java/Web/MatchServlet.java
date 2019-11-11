@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ *  Servlet handling the Match detail Page
  * @author goturak
  */
 public class MatchServlet extends HttpServlet {

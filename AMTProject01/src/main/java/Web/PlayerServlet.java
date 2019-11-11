@@ -61,6 +61,15 @@ MatchesManager mm= new MatchesManagerSQL();
     
     }
     
+    
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     * used to handle the ajax request from the datatable
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        //To change body of generated methods, choose Tools | Templates.
