@@ -29,3 +29,9 @@ Our application is a multi-tiered application in Java EE following the  [guideli
   - The automated tests can be launched with the script **RunTest.sh**
 * **Usability**
   - The pagination has been implemented at the UI level and in the Sql queries
+
+
+
+  ## Testing
+
+  [Documenttion on testing](https://github.com/goturak/Teaching-HEIGVD-AMT-2019-Project-One/blob/master/doc/testing.md)
